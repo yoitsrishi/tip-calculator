@@ -17,16 +17,21 @@ function App() {
         recommendationData={dataRecommendation}
         recommendationSetData={setDataRecommendation}
       />
-      <Calculation
-        data={data}
-        price={price}
-        dataRecommendation={dataRecommendation}
-      />
-      <Reset
-        setPrice={setPrice}
-        serviceSetData={setData}
-        recommendationSetData={setDataRecommendation}
-      />
+      {price > 0 && (
+        <>
+          <Calculation
+            data={data}
+            price={price}
+            dataRecommendation={dataRecommendation}
+          />
+
+          <Reset
+            setPrice={setPrice}
+            serviceSetData={setData}
+            recommendationSetData={setDataRecommendation}
+          />
+        </>
+      )}
     </>
   );
 }
