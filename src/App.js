@@ -1,24 +1,33 @@
-import logo from './logo.svg';
-import './App.css';
+import BillEntry from './components/BillEntry';
+import Service from './components/Service';
+import Calculation from './components/Calculation';
+import Reset from './components/Reset';
+import { useState } from 'react';
 
 function App() {
+  const [data, setData] = useState('');
+  const [price, setPrice] = useState('');
+  const [dataRecommendation, setDataRecommendation] = useState('');
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <BillEntry price={price} setPrice={setPrice} />
+      <Service action="service" serviceData={data} serviceSetData={setData} />
+      <Service
+        action="recommendation"
+        recommendationData={dataRecommendation}
+        recommendationSetData={setDataRecommendation}
+      />
+      <Calculation
+        data={data}
+        price={price}
+        dataRecommendation={dataRecommendation}
+      />
+      <Reset
+        setPrice={setPrice}
+        serviceSetData={setData}
+        recommendationSetData={setDataRecommendation}
+      />
+    </>
   );
 }
 
